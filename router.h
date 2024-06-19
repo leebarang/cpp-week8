@@ -15,14 +15,11 @@ class Router : public Node {
 protected:
   std::vector<RoutingEntry> routingTable_;
 
-  void onReceive(Packet* packet) override {
-    for(RoutingEntry r : routingTable_) {
-      if(r.destination == packet->destAddress()) {
-        r.nextLink->sendPacket(this, packet);
-        break;
-      }
-    }
-  }
+  // 패킷을 받아 재전송한다.
+  void onReceive(Packet* packet) override;
+  
+public:
+  ~Router() override {}
 };
 
 #endif

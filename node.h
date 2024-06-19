@@ -17,12 +17,8 @@ protected:
   std::vector<Link*> myLink_;
 
 public:
-  short port = 3000;
-  short getNewPort() {
-    return port++;
-  }
   Node() : id_(nextId_++) {}
-  virtual ~Node() = 0;
+  virtual ~Node() {}
   int id() const { return id_; }
   virtual void onReceive(Packet *packet) = 0;
 };

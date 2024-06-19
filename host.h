@@ -23,12 +23,16 @@ private:
 public:
   Address address() { return address_; }
   Host(Address address) : address_(address) {}
+  ~Host() override {}
 
   // 호스트와 설치된 서비스를 전부 초기화한다.
   void initialize();
 
   // 랜덤한 링크를 하나 반환한다.
   Link* getRandomLink();
+
+  // 고유한 포트를 각 서비스에 부여하기 위해, 사용가능한 포트를 반환한다.
+  short assignSrcPort();
 
   // 패킷을 전달 받는다.
   void onReceive(Packet* packet) override;

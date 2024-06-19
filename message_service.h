@@ -20,14 +20,10 @@ private:
 
 public:
   // 메시지 패킷를 전송한다
-  void send(std::string message) {
-    Packet *newPacket = new Packet(host_->address(),destAddress_,port_,destPort_,message);
-    host_->send(newPacket);
-  }
+  void send(std::string message);
 
-  void receivePacket(Packet* packet) override {
-    std::cout << "MessageService: received \""<< packet->dataString() <<"\" from "<< packet->destAddress().toString() << ":" << packet->destPort() << std::endl;
-  }
+  // 패킷을 받고, 서비스를 실행한다.
+  void receivePacket(Packet* packet) override;
 
 };
 

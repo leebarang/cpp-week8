@@ -36,6 +36,8 @@ public:
   // 패킷 데이터
   const std::vector<char> &data() { return data_; }
 
+  int dataSize() {return data_.size();}
+
   // 패킷 데이터를 문자열로 변환한다
   std::string dataString() {
     std::string str;

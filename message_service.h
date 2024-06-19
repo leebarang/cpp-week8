@@ -19,8 +19,16 @@ private:
       : Service(host, port), destAddress_(destAddress), destPort_(destPort) {}
 
 public:
-  // 메시지를 전송한다
-  void send(std::string message);
+  // 메시지 패킷를 전송한다
+  void send(std::string message) {
+    Packet *newPacket = new Packet(host_->address(),destAddress_,port_,destPort_,message);
+    host_->send(newPacket);
+  }
+
+  void receivePacket(Packet* packet) override {
+    std::cout << "MessageService: received \""<< packet->dataString() <<"\" from "<< packet->destAddress().toString() << ":" << packet->destPort() << std::endl;
+  }
+
 };
 
 #endif

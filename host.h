@@ -4,8 +4,12 @@
 #include "address.h"
 #include "packet.h"
 #include "service.h"
+#include <ctime>
 #include <vector>
 
+class Service;
+
+// 서비스와 (패킷 내부)포트를 가지고 있고, 패킷을 노드를 통해 전송하는 역할
 class Host : public Node {
   friend class ServiceInstaller;
 
@@ -22,6 +26,12 @@ public:
 
   // 호스트와 설치된 서비스를 전부 초기화한다.
   void initialize();
+
+  // 랜덤한 링크를 하나 반환한다.
+  Link* getRandomLink();
+
+  // 패킷을 전달 받는다.
+  void onReceive(Packet* packet) override;
 
   // 링크를 랜덤으로 하나 선택하여 패킷을 전송한다.
   void send(Packet *packet);

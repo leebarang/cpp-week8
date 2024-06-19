@@ -2,6 +2,7 @@
 #define SERVICE_H
 
 #include "node.h"
+#include "host.h"
 
 class Host;
 
@@ -16,6 +17,10 @@ protected:
   short port_;
 
   Service(Host *host, int port) : host_(host), port_(port) {}
+
+public:
+  virtual void receivePacket(Packet* packet) = 0;
+  short port() {return port_;}
 };
 
 #endif

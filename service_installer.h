@@ -9,6 +9,8 @@ class ServiceInstaller {
 protected:
   // 호스트와 서비스 사이의 관계를 설정한다.
   void install(Host *host, Service *service);
+  // 사용 가능한 포트를 만들어 반환
+  short assignSrcPort(Host *host);
 };
 
 #endif

@@ -12,6 +12,11 @@ class EchoService : public Service {
 
 private:
   EchoService(Host *host, short port) : Service(host, port) {}
+
+public:
+  void receivePacket(Packet* packet) override {
+    std::cout << "EchoService: received \""<< packet->dataString() <<"\" from "<< packet->destAddress().toString() << ":" << packet->destPort() << ", send reply with same data" << std::endl;
+  }
 };
 
 #endif

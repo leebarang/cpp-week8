@@ -19,6 +19,7 @@ private:
       : Service(host, port), destAddress_(destAddress), destPort_(destPort) {}
 
 public:
+  virtual ~MessageService() override {}
   // 메시지 패킷를 전송한다
   void send(std::string message);
 

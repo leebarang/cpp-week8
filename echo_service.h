@@ -14,6 +14,7 @@ private:
   EchoService(Host *host, short port) : Service(host, port) {}
 
 public:
+  virtual ~EchoService() override {}
   void receivePacket(Packet* packet) override;
 };
 

@@ -19,6 +19,7 @@ protected:
   Service(Host *host, int port) : host_(host), port_(port) {}
 
 public:
+  virtual ~Service() {};
   virtual void receivePacket(Packet* packet) = 0;
   short port() {return port_;}
 };

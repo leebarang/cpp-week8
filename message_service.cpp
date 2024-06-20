@@ -9,4 +9,5 @@ void MessageService::send(std::string message) {
 // 패킷을 받고, 서비스를 실행한다.
 void MessageService::receivePacket(Packet* packet) {
     std::cout << "MessageService: received \""<< packet->dataString() <<"\" from "<< packet->srcAddress().toString() << ":" << packet->srcPort() << std::endl;
+    delete packet;
 }

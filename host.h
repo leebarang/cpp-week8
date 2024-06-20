@@ -23,7 +23,14 @@ private:
 public:
   Address address() { return address_; }
   Host(Address address) : address_(address) {}
-  ~Host() override { delete this; }
+  ~Host() override {
+    // 설치된 모든 서비스 객체들을 삭제
+    for (auto service : services_) {
+        delete &service;
+    }
+    // 벡터를 비워줌으로써 더 이상 필요하지 않은 포인터들을 관리
+    services_.clear();
+  }
 
   // 호스트와 설치된 서비스를 전부 초기화한다.
   void initialize();

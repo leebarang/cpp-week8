@@ -44,7 +44,7 @@
         }
 
         else {
-            std::cout << "Host #" << id() << ": no service for packet (from: "<< packet->srcAddress().toString() << ", to: " << packet->destAddress().toString() << ", " << packet->dataSize() << " bytes)" << std::endl;
+            std::cout << "services not found" << std::endl;
         }
     }
 
@@ -53,4 +53,3 @@
         std::cout << "Host #" << id() << ": sending packet (from: " << packet->srcAddress().toString() << ", to: " << packet->destAddress().toString() << ", " << packet->dataSize() << " bytes)" << std::endl;
         getRandomLink()->sendPacket(this, packet);
     }
-
